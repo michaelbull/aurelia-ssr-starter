@@ -1,5 +1,7 @@
 # Aurelia SSR Starter Kit
 
+[![dependencies Status](https://david-dm.org/michaelbull/aurelia-ssr-starter/status.svg?style=flat-square)](https://david-dm.org/michaelbull/aurelia-ssr-starter) [![devDependencies Status](https://david-dm.org/michaelbull/aurelia-ssr-starter/dev-status.svg?style=flat-square)](https://david-dm.org/michaelbull/aurelia-ssr-starter?type=dev)
+
 A minimal [Aurelia][aurelia] starter kit supporting server side rendering.
 
 Written in [TypeScript][typescript] and built using [webpack][webpack].
@@ -21,8 +23,8 @@ seamlessly as soon as the code has loaded.
 The three main benefits to rendering the application on the server are outlined
 below:
 
+#### 1. Improved "Search Engine Optimization" (SEO)
 
-### 1. Improved "Search Engine Optimization" (SEO)
 Search engines typically rank pages on the web by visiting them using a program
 referred to as a "web crawler". These crawlers request the document of a
 website and begin parsing the content within the document, typically avoiding
@@ -32,14 +34,16 @@ content to the crawler for it to index, ultimately harming the search ranking.
 Utilizing a server to render the initial document will allow crawlers to
 retrieve and index meaningful content without executing any JavaScript.
 
-### 2. Performance increase on low-powered devices
+#### 2. Performance increase on low-powered devices
+
 In an effort to reduce battery consumption and avoid computation that would
 degrade the user experience, many low-powered devices disable JavaScript
 entirely when browsing the web. Rendering the application server side will
 allow these devices to continue using your application, even if the features
 are limited as a result.
 
-### 3. Reduced load times
+#### 3. Reduced load times
+
 As outlined in the section above, server side rendering reduces the time that
 the user would be required to wait for the entire client bundle to finish
 downloading and render before they can begin interacting with the application. 
