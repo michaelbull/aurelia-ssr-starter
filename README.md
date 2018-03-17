@@ -9,7 +9,7 @@ Written in [TypeScript][typescript] and built using [webpack][webpack].
 ## Why SSR?
 
 A typical single page web application renders and executes in the browser. This
-is reliant on the browser having JavaScript enabled, and requires the browser
+is reliant on the browser having JavaScript enabled and requires the browser
 to download the entire application before it can begin rendering the document.
 
 Server side rendering, often referred to as isomorphic/universal rendering,
