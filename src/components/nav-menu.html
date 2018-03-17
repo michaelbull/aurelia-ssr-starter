@@ -1,0 +1,7 @@
+<template class="nav-menu">
+  <ul class="nav-menu__items">
+    <li class="nav-menu__item" repeat.for="nav of navigation">
+      <a class="nav-menu__link ${nav.isActive ? 'nav-menu__link--active' : ''}" href.bind="nav.href">${ nav.title }</a>
+    </li>
+  </ul>
+</template>

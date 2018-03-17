@@ -1,0 +1,53 @@
+{
+  "name": "aurelia-ssr-starter",
+  "version": "0.0.0",
+  "description": "A minimal Aurelia starter kit supporting server side rendering.",
+  "private": true,
+  "scripts": {
+    "clean": "rimraf dist",
+    "client": "webpack-dev-server --mode=development --env=client --inline --hot",
+    "watch:ssr": "webpack --mode=development --watch --env=client-ssr",
+    "watch:server": "webpack --mode=development --watch --env=server",
+    "prewatch": "npm run clean",
+    "watch": "npm-run-all --parallel watch:*",
+    "build:ssr": "webpack --mode=production --env=client-ssr",
+    "build:server": "webpack --mode=production --env=server",
+    "prebuild": "npm run clean",
+    "build": "npm-run-all --parallel build:*",
+    "start": "ts-node server.ts"
+  },
+  "dependencies": {
+    "@types/copy-webpack-plugin": "4.4.1",
+    "@types/extract-text-webpack-plugin": "3.0.2",
+    "@types/html-webpack-plugin": "2.30.3",
+    "@types/koa": "2.0.44",
+    "@types/koa-static": "4.0.0",
+    "@types/webpack": "4.1.1",
+    "@types/webpack-node-externals": "1.6.3",
+    "aurelia-bootstrapper": "2.2.0",
+    "aurelia-middleware-koa": "0.1.1",
+    "aurelia-pal-nodejs": "1.0.0-beta.3.2.0",
+    "aurelia-ssr-bootstrapper-webpack": "0.1.1",
+    "aurelia-webpack-plugin": "3.0.0-rc.1",
+    "copy-webpack-plugin": "4.5.1",
+    "css-loader": "0.28.11",
+    "extract-text-webpack-plugin": "4.0.0-beta.0",
+    "file-loader": "1.1.11",
+    "html-webpack-plugin": "3.0.6",
+    "koa": "2.5.0",
+    "koa-compress": "2.0.0",
+    "koa-static": "4.0.2",
+    "npm-run-all": "4.1.2",
+    "rimraf": "2.6.2",
+    "style-loader": "0.20.3",
+    "ts-loader": "4.1.0",
+    "ts-node": "5.0.1",
+    "typescript": "2.7.2",
+    "webpack": "4.1.1",
+    "webpack-cli": "2.0.12",
+    "webpack-node-externals": "1.6.0"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "3.1.1"
+  }
+}
