@@ -37,7 +37,7 @@ function configure(env: 'client' | 'client-ssr' | 'server', args: any): webpack.
                 },
                 {
                     test: /\.css$/,
-                    use: (args.mode === 'production') ? ExtractTextPlugin.extract({
+                    use: (env === 'server' || env === 'client-ssr') ? ExtractTextPlugin.extract({
                         fallback: 'style-loader',
                         use: ['css-loader']
                     }) : ['style-loader', 'css-loader']
