@@ -117,5 +117,7 @@ This project is available under the terms of the ISC license. See the
 [typescript]: https://www.typescriptlang.org/
 [dev-server]: https://github.com/webpack/webpack-dev-server
 [localhost]: http://localhost:8080
+[inline]: https://webpack.github.io/docs/webpack-dev-server.html#inline-mode
+[hmr]: https://webpack.github.io/docs/webpack-dev-server.html#hot-module-replacement
 [watch-mode]: https://webpack.js.org/configuration/watch/
 [koa]: http://koajs.com/
