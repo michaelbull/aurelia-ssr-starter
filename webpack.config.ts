@@ -1,11 +1,11 @@
 import * as CopyWebpackPlugin from 'copy-webpack-plugin';
-import * as ExtractTextPlugin from 'extract-text-webpack-plugin';
 import * as HtmlWebpackPlugin from 'html-webpack-plugin';
 import * as path from 'path';
 import * as webpack from 'webpack';
 import * as nodeExternals from 'webpack-node-externals';
 
 const { AureliaPlugin } = require('aurelia-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 let title = 'Aurelia SSR';
 let baseUrl = '/';
@@ -37,10 +37,7 @@ function configure(env: 'client' | 'client-ssr' | 'server', args: any): webpack.
                 },
                 {
                     test: /\.css$/,
-                    use: (env === 'server' || env === 'client-ssr') ? ExtractTextPlugin.extract({
-                        fallback: 'style-loader',
-                        use: ['css-loader']
-                    }) : ['style-loader', 'css-loader']
+                    use: (env === 'server' || env === 'client-ssr') ? [MiniCssExtractPlugin.loader, 'css-loader'] : ['style-loader', 'css-loader']
                 },
                 {
                     test: /\.(png|jpg|gif)$/,
@@ -67,12 +64,15 @@ function configure(env: 'client' | 'client-ssr' | 'server', args: any): webpack.
         },
 
         plugins: [
-            new AureliaPlugin()
+            new AureliaPlugin(),
+            new MiniCssExtractPlugin({
+                filename: '[name]-[hash].css',
+                chunkFilename: '[name]-[chunkhash].css'
+            })
         ],
 
         devServer: {
             stats: 'errors-only',
-            contentBase: distDir,
             historyApiFallback: true // serve index.html for all 404 (required for push-state)
         }
     };
@@ -98,9 +98,7 @@ function configure(env: 'client' | 'client-ssr' | 'server', args: any): webpack.
                 ]
             })
         ];
-    }
-
-    if (env === 'client-ssr' || env === 'client') {
+    } else {
         config.entry = {
             client: ['aurelia-bootstrapper']
         };
@@ -121,15 +119,9 @@ function configure(env: 'client' | 'client-ssr' | 'server', args: any): webpack.
         ]));
     }
 
-    if (env === 'server' || env === 'client-ssr') {
-        config.plugins!.push(new ExtractTextPlugin('[name]-[contenthash].css'));
-    }
-
     if (args.mode === 'development') {
         config.devtool = 'inline-source-map';
-    }
-
-    if (args.mode === 'production') {
+    } else if (args.mode === 'production') {
         if (env !== 'server') {
             config.output!.filename = '[name]-[hash].js';
             config.output!.chunkFilename = '[name]-[chunkhash].js';
